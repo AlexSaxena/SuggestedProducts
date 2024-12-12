@@ -1,19 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getCollection, getEntries, getEntry } from "astro:content";
+
+const trialData = await getEntry('products', 'trial')
 ---
 
 <Layout>
-  <!-- <h2 class="hello-world">Have not fetched!</h2>
-  <button class="btn btn-success">My Btn</button>
+  <h2 class="hello-world">Have not fetched!</h2>
+  <!--  <button class="btn btn-success">My Btn</button>
 
   <Welcome /> -->
   <h1>Hello World!</h1>
-  <button class="secondary">Secondary</button>
+  <p>{trialData?.data.name}</p>
 </Layout>
 
 <script>
-  const title = document.querySelector<HTMLHeadingElement>(".hello-world")!;
-  fetch("http://localhost:5177/api/v1/Hello")
-    .then((res) => res.text())
-    .then((text) => (title.textContent = text));
+//   const title = document.querySelector<HTMLHeadingElement>(".hello-world")!;
+//   fetch("http://localhost:5177/api/v1/Hello")
+//     .then((res) => res.text())
+//     .then((text) => (title.textContent = text));
 </script>
