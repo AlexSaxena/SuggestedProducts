@@ -1,40 +1,57 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ProductGallery from "../components/product.gallery.astro";
 import { getCollection, getEntries, getEntry } from "astro:content";
 
-const productData = await getCollection('products')
-const products = productData.map(item => item.data)
+const productData = await getCollection("products");
+const products = productData.map((item) => item.data);
 ---
 
 <Layout>
-	<h1 class="text-2xl font-bold mb-6">Product List</h1>
-	<table class="table-auto w-full border-collapse border border-gray-200">
-	  <thead>
-		<tr class="bg-gray-100">
-		  <th class="border border-gray-200 px-4 py-2 text-left">Image</th>
-		  <th class="border border-gray-200 px-4 py-2 text-left">Name</th>
-		  <th class="border border-gray-200 px-4 py-2 text-left">Description</th>
-		  <th class="border border-gray-200 px-4 py-2 text-left">Price</th>
-		</tr>
-	  </thead>
-	  <tbody>
-		{products.map(product => (
-		  <tr class="hover:bg-gray-50">
-			<td class="border border-gray-200 px-4 py-2">
-			  <img src={product.imageSrc} alt={product.name} class="w-24 h-auto rounded-md" />
-			</td>
-			<td class="border border-gray-200 px-4 py-2 font-medium">{product.name}</td>
-			<td class="border border-gray-200 px-4 py-2">{product.description}</td>
-			<td class="border border-gray-200 px-4 py-2 text-green-600 font-bold">{product.price}</td>
-		  </tr>
-		))}
-	  </tbody>
-	</table>
-  </Layout>
+  <main>
+    <ProductGallery title="This is a Gallery" />
+    <h1 class="text-2xl font-bold mb-6">Product List</h1>
+    <table class="table-auto w-full border-collapse border border-gray-200">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="border border-gray-200 px-4 py-2 text-left">Image</th>
+          <th class="border border-gray-200 px-4 py-2 text-left">Name</th>
+          <th class="border border-gray-200 px-4 py-2 text-left">Description</th
+          >
+          <th class="border border-gray-200 px-4 py-2 text-left">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          products.map((product) => (
+            <tr class="hover:bg-gray-50">
+              <td class="border border-gray-200 px-4 py-2">
+                <img
+                  src={product.imageSrc}
+                  alt={product.name}
+                  class="w-24 h-auto rounded-md"
+                />
+              </td>
+              <td class="border border-gray-200 px-4 py-2 font-medium">
+                {product.name}
+              </td>
+              <td class="border border-gray-200 px-4 py-2">
+                {product.description}
+              </td>
+              <td class="border border-gray-200 px-4 py-2 text-green-600 font-bold">
+                {product.price}
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </main>
+</Layout>
 
 <script>
-//   const title = document.querySelector<HTMLHeadingElement>(".hello-world")!;
-//   fetch("http://localhost:5177/api/v1/Hello")
-//     .then((res) => res.text())
-//     .then((text) => (title.textContent = text));
+  //   const title = document.querySelector<HTMLHeadingElement>(".hello-world")!;
+  //   fetch("http://localhost:5177/api/v1/Hello")
+  //     .then((res) => res.text())
+  //     .then((text) => (title.textContent = text));
 </script>
