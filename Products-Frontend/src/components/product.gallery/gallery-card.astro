@@ -12,6 +12,15 @@ interface Props {
 const { product } = Astro.props;
 ---
 
-<article class="m-2 p-2">
-  <h3>{product.name}</h3>
+<article class="card bg-base-100 w-96 shadow-xl" data-id={product.id}>
+  <figure>
+    <img src={product.imageSrc} alt="something" />
+  </figure>
+  <div class="card-body">
+    <h3 class="card-title">{product.name}</h3>
+    <p>{product.description}</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
 </article>
