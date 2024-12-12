@@ -1,3 +1,8 @@
 {
-    "name": "Adam"
+
+    "id": "23af8076-2f2b-40c5-a1cb-3d45d7b74a5e",
+      "name": "Adam",
+      "description": "A man.",
+      "price": "$420",
+      "imageSrc": "https://picsum.photos/200"
 }
