@@ -1,14 +1,22 @@
 ---
-interface Props {
-    title: string,
+import { getCollection } from "astro:content";
+import GalleryCard from "./product.gallery/gallery-card.astro";
 
+interface Props {
+  title: string;
 }
+
+const productData = await getCollection("products");
+const products = productData.map((item) => item.data);
 
 const { title } = Astro.props;
 ---
 
-<section>
-    <h2>
-        {title}
-    </h2>
+<section class="m-10 bg-slate-900 rounded-xl p-5">
+  <h2 class="text-white text-2xl">
+    {title}
+    {products.map((product) => <GalleryCard product={product} />)}
+  </h2>
+
+  <div class="flex text-white">This is a different part of the Gallery</div>
 </section>
